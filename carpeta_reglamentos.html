@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carpeta de Reglamentos — Comercio Exterior del Café · AMECAFÉ 2026</title>
+<style>
+:root {
+  --cafe:        #4A2C17;
+  --cafe-med:    #7B4A2D;
+  --cafe-light:  #C8956C;
+  --cafe-pale:   #F5EDE4;
+  --verde:       #2D6A4F;
+  --verde-light: #52B788;
+  --verde-pale:  #D8F3DC;
+  --azul:        #1A5276;
+  --azul-light:  #2E86AB;
+  --azul-pale:   #D6EAF8;
+  --naranja:     #B85C38;
+  --naranja-pale:#FDEBD0;
+  --amarillo:    #9A7D0A;
+  --amarillo-pale:#FEF9E7;
+  --gris:        #566573;
+  --gris-pale:   #F2F3F4;
+  --white:       #FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#FAF7F4;color:#2C1A0E;line-height:1.6}
+
+/* ── PORTADA ── */
+.portada{
+  background:linear-gradient(135deg,var(--cafe) 0%,var(--cafe-med) 60%,#B8762A 100%);
+  color:#fff;padding:60px 40px 50px;text-align:center;position:relative;overflow:hidden;
+}
+.portada::before{
+  content:'';position:absolute;top:-40px;right:-40px;width:220px;height:220px;
+  border-radius:50%;background:rgba(255,255,255,.07);
+}
+.portada::after{
+  content:'';position:absolute;bottom:-30px;left:-30px;width:160px;height:160px;
+  border-radius:50%;background:rgba(255,255,255,.05);
+}
+.portada-logo{font-size:3rem;margin-bottom:12px}
+.portada h1{font-size:1.9rem;font-weight:700;letter-spacing:.5px;margin-bottom:8px}
+.portada p{font-size:1rem;opacity:.85;max-width:620px;margin:0 auto 20px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px}
+.chip{
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
+  border-radius:20px;padding:5px 14px;font-size:.78rem;font-weight:600;
+}
+.aviso{
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);
+  border-radius:10px;padding:12px 20px;margin-top:22px;font-size:.82rem;
+  max-width:700px;margin-left:auto;margin-right:auto;
+}
+.aviso strong{display:block;margin-bottom:4px}
+
+/* ── NAV ── */
+.sticky-nav{
+  position:sticky;top:0;z-index:100;background:var(--cafe);
+  display:flex;flex-wrap:wrap;gap:4px;padding:10px 24px;
+  box-shadow:0 2px 8px rgba(0,0,0,.3);
+}
+.sticky-nav a{
+  color:#fff;text-decoration:none;font-size:.78rem;font-weight:600;
+  padding:5px 12px;border-radius:14px;transition:background .2s;white-space:nowrap;
+}
+.sticky-nav a:hover{background:rgba(255,255,255,.2)}
+
+/* ── LAYOUT ── */
+.container{max-width:1100px;margin:0 auto;padding:32px 24px 60px}
+.section-title{
+  display:flex;align-items:center;gap:12px;
+  font-size:1.2rem;font-weight:700;padding:16px 20px;
+  border-radius:10px 10px 0 0;color:#fff;margin-top:40px;
+}
+.section-title .icon{font-size:1.4rem}
+.sec-leyes  .section-title{background:linear-gradient(90deg,var(--azul),var(--azul-light))}
+.sec-regl   .section-title{background:linear-gradient(90deg,var(--verde),var(--verde-light))}
+.sec-noms   .section-title{background:linear-gradient(90deg,var(--naranja),#D4845A)}
+.sec-intl   .section-title{background:linear-gradient(90deg,var(--amarillo),#C4A827)}
+
+/* ── CARDS TABLE ── */
+.reg-table{
+  width:100%;border-collapse:collapse;
+  background:#fff;border-radius:0 0 10px 10px;
+  box-shadow:0 2px 12px rgba(0,0,0,.08);overflow:hidden;
+}
+.reg-table th{
+  background:#F7F3EF;color:var(--cafe);font-size:.74rem;
+  font-weight:700;text-transform:uppercase;letter-spacing:.5px;
+  padding:10px 14px;text-align:left;border-bottom:2px solid var(--cafe-pale);
+}
+.reg-table td{
+  padding:12px 14px;vertical-align:top;
+  border-bottom:1px solid #F0EBE5;font-size:.85rem;
+}
+.reg-table tr:last-child td{border-bottom:none}
+.reg-table tr:hover td{background:#FDFAF7}
+
+.sigla{
+  font-weight:700;color:var(--azul);font-size:.82rem;
+  white-space:nowrap;
+}
+.reg-name{font-weight:600;color:var(--cafe);line-height:1.4}
+.reg-desc{color:var(--gris);font-size:.8rem;margin-top:3px}
+.arts{font-size:.77rem;color:var(--cafe-med);margin-top:4px}
+.arts b{color:var(--cafe)}
+
+.badge{
+  display:inline-block;border-radius:12px;padding:2px 10px;
+  font-size:.72rem;font-weight:700;white-space:nowrap;
+}
+.badge-vigente {background:var(--verde-pale);color:var(--verde)}
+.badge-reforma  {background:var(--azul-pale);color:var(--azul)}
+.badge-dof      {background:var(--cafe-pale);color:var(--cafe-med)}
+
+.btn-dl{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--azul);color:#fff;text-decoration:none;
+  border-radius:7px;padding:6px 12px;font-size:.77rem;font-weight:600;
+  transition:background .2s;white-space:nowrap;
+}
+.btn-dl:hover{background:var(--azul-light)}
+.btn-dl-verde{background:var(--verde)}
+.btn-dl-verde:hover{background:var(--verde-light)}
+.btn-dl-orange{background:var(--naranja)}
+.btn-dl-orange:hover{background:#CC7854}
+.btn-dl-gold{background:var(--amarillo)}
+.btn-dl-gold:hover{background:#B89520}
+
+.btn-alt{
+  display:inline-flex;align-items:center;gap:5px;
+  background:transparent;color:var(--gris);border:1px solid #CCC;
+  border-radius:7px;padding:5px 10px;font-size:.74rem;font-weight:600;
+  text-decoration:none;transition:all .2s;margin-top:5px;white-space:nowrap;
+}
+.btn-alt:hover{background:var(--gris-pale)}
+
+.btns{display:flex;flex-direction:column;gap:5px;min-width:120px}
+
+/* ── INSTRUCCIONES ── */
+.instrucciones{
+  background:var(--azul-pale);border:1px solid #BDD3E5;
+  border-radius:10px;padding:20px 24px;margin:30px 0;
+}
+.instrucciones h3{color:var(--azul);margin-bottom:8px;font-size:1rem}
+.instrucciones ol{margin-left:18px;font-size:.84rem;color:#1A3A52}
+.instrucciones li{margin-bottom:5px}
+.instrucciones code{background:rgba(0,0,0,.08);border-radius:4px;padding:1px 6px;font-size:.8rem}
+
+/* ── STATS ── */
+.stats-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:14px;margin:28px 0;
+}
+.stat-card{
+  background:#fff;border-radius:10px;padding:18px 16px;text-align:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.07);
+}
+.stat-num{font-size:2rem;font-weight:700;color:var(--cafe)}
+.stat-label{font-size:.78rem;color:var(--gris);margin-top:4px}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--cafe);color:rgba(255,255,255,.8);
+  text-align:center;padding:28px 24px;font-size:.8rem;
+}
+footer strong{color:#fff}
+
+@media(max-width:700px){
+  .portada h1{font-size:1.4rem}
+  .reg-table{font-size:.78rem}
+  .reg-table th:nth-child(3),.reg-table td:nth-child(3){display:none}
+  .container{padding:20px 14px 40px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ PORTADA ══════════════ -->
+<div class="portada">
+  <div class="portada-logo">📚</div>
+  <h1>Carpeta de Reglamentos Aplicables</h1>
+  <p>Comercio Exterior del Café · Marco Normativo Vigente 2026</p>
+  <div class="chips">
+    <span class="chip">🏛 AMECAFÉ</span>
+    <span class="chip">📅 Noviembre 2026</span>
+    <span class="chip">📦 Importación · Exportación · Movilización</span>
+    <span class="chip">⚖️ Normativa actualizada</span>
+  </div>
+  <div class="aviso">
+    <strong>ℹ️ Cómo usar esta carpeta</strong>
+    Haz clic en <b>"Descargar PDF"</b> para abrir o guardar cada ordenamiento directamente desde su fuente oficial (DOF / Cámara de Diputados / SAT / SENASICA). Todos los vínculos apuntan a los textos vigentes 2025–2026.
+  </div>
+</div>
+
+<!-- ══════════════ NAV ══════════════ -->
+<nav class="sticky-nav">
+  <a href="#leyes">📜 Leyes Federales</a>
+  <a href="#regl">📋 Reglamentos y RGCE</a>
+  <a href="#noms">🔬 NOMs y Fitosanitarios</a>
+  <a href="#intl">🌐 Acuerdos Internacionales</a>
+  <a href="#instrucciones">💡 Instrucciones</a>
+</nav>
+
+<div class="container">
+
+  <!-- ESTADÍSTICAS -->
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-num">8</div><div class="stat-label">Leyes Federales</div></div>
+    <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Reglamentos / RGCE</div></div>
+    <div class="stat-card"><div class="stat-num">4</div><div class="stat-label">NOMs y Fitosanitarias</div></div>
+    <div class="stat-card"><div class="stat-num">2</div><div class="stat-label">Acuerdos Internacionales</div></div>
+    <div class="stat-card"><div class="stat-num">17</div><div class="stat-label">Ordenamientos totales</div></div>
+  </div>
+
+  <!-- ══════════════ SECCIÓN 1: LEYES FEDERALES ══════════════ -->
+  <div id="leyes" class="sec-leyes">
+    <div class="section-title"><span class="icon">📜</span> Leyes Federales</div>
+    <table class="reg-table">
+      <thead>
+        <tr>
+          <th>Sigla</th>
+          <th>Nombre y artículos clave</th>
+          <th>Última reforma</th>
+          <th>Descargar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="sigla">LA</span></td>
+          <td>
+            <div class="reg-name">Ley Aduanera</div>
+            <div class="reg-desc">Marco rector del despacho aduanal, pedimento, semáforo, reconocimiento</div>
+            <div class="arts"><b>Arts. clave:</b> 36, 36-A (documentos pedimento) · 43 (retiro) · 56 (reconocimiento) · 83 (IGI/DTA) · 90–91 (V1) · 108, 112 (IMMEX/RFE) · 159–165 (agente aduanal)</div>
+          </td>
+          <td><span class="badge badge-reforma">DOF 19-Nov-2025</span></td>
+          <td class="btns">
+            <a class="btn-dl" href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LA.pdf" target="_blank">⬇ Descargar PDF</a>
+            <a class="btn-alt" href="https://www.diputados.gob.mx/LeyesBiblio/ref/ladua.htm" target="_blank">🔗 Reformas históricas</a>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="sigla">LIGIE / TIGIE</span></td>
+          <td>
+            <div class="reg-name">Ley de los Impuestos Generales de Importación y Exportación — Tarifa</div>
+            <div class="reg-desc">Fracciones arancelarias del café; tasas IGI e IGE</div>
+            <div class="arts"><b>Fracciones café:</b> 0901.11.01 (verde) · 0901.21.01 (tostado) · 2101.11.01 (soluble) — reforma arancelaria DOF 29-Dic-2025</div>
+          </td>
+          <td><span class="badge badge-reforma">DOF 29-Dic-2025</span></td>
+          <td class="btns">
+            <a class="btn-dl" href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LIGIE.pdf" target="_blank">⬇ Descargar PDF</a>
+            <a class="btn-alt" href="https://www.sat.gob.mx/aplicacion/operacion/14336/arancel-de-la-tarifa" target="_blank">🔗 Consulta arancel SAT</a>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="sigla">LCE</span></td>
+          <td>
+            <div class="reg-name">Ley de Comercio Exterior</div>
+            <div class="reg-desc">Reglas de origen, prácticas desleales, cuotas compensatorias, medidas de salvaguarda</div>
+            <div class="arts"><b>Arts. clave:</b> 3 (definiciones) · 15 (medidas de regulación) · 28–46 (prácticas desleales)</div>
+          </td>
+          <td><span class="badge badge-vigente">Vigente</span></td>
+          <td class="btns">
+            <a class="btn-dl" href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LCE.pdf" target="_blank">⬇ Descargar PDF</a>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="sigla">LFSV</span></td>
+          <td>
+            <div class="reg-name">Ley Federal de Sanidad Vegetal</div>
+            <div class="reg-desc">Base legal del CFI-I, CFI-X y CFMN emitidos por SENASICA</div>
+            <div class="arts"><b>Arts. clave:</b> 7 y 25 (CFI-I válido 8 días hábiles) · 15–16 (CFI-X obligatorio) · Art. 15–16 (CFMN) · 59 (sanciones)</div>
+          </td>
+          <td><span class="badge badge-vigente">Vigente</span></td>
+          <td class="btns">
+            <a class="btn-dl" href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFSV.pdf" target="_blank">⬇ Descargar PDF</a>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="sigla">LIVA</span></td>
+          <td>
+            <div class="reg-name">Ley del Impuesto al Valor Agregado</div>
+            <div class="reg-desc">Tasa 0% IVA en exportación; exención importaciones temporales IMMEX</div>
+            <div class="arts"><b>Arts. clave:</b> 25 fracc. I (exención IVA importación temporal IMMEX) · 29 (tasa 0% exportación)</div>
+          </td>
+          <td><span class="badge badge-vigente">Vigente</span></td>
+          <td class="btns">
+            <a class="btn-dl" href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LIVA.pdf" target="_blank">⬇ Descargar PDF</a>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="sigla">LIEPS</span></td>
+          <td>
+            <div class="reg-name">Ley del Impuesto Especial sobre Producción y Servicios</div>
+            <div class="reg-desc">No causación de IEPS en exportaciones definitivas de café procesado</div>
+            <div class="arts"><b>Arts. clave:</b> 15 fracc. VIII (no causación IEPS exportación café procesado)</div>
+          </td>
+          <td><span class="badge badge-vigente">Vigente</span></td>
+          <td class="btns">
+            <a class="btn-dl" href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LIEPS.pdf" target="_blank">⬇ Descargar PDF</a>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="sigla">LFD</span></td>
+          <td>
+            <div class="reg-name">Ley Federal de Derechos</div>
+            <div class="reg-desc">Base legal del Derecho de Trámite Aduanero (DTA)</div>
+            <div class="arts"><b>Arts. clave:</b> Art. 49 (DTA: 8 al millar sobre valor en aduana)</div>
+          </td>
+          <td><span class="badge badge-vigente">Vigente</span></td>
+          <td class="btns">
+            <a class="btn-dl" href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFD.pdf" target="_blank">⬇ Descargar PDF</a>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="sigla">CFF</span></td>
+          <td>
+            <div class="reg-name">Código Fiscal de la Federación</div>
+            <div class="reg-desc">Base legal del CFDI y el Complemento Carta Porte 3.1</div>
+            <div class="arts"><b>Arts. clave:</b> 29 (CFDI obligatorio) · 29-A (requisitos) · 84 (multas Carta Porte: $17,030–$90,790)</div>
+          </td>
+          <td><span class="badge badge-vigente">Vigente</span></td>
+          <td class="btns">
+            <a class="btn-dl" href="https://www.diputados.gob.mx/LeyesBiblio/pdf/CFF.pdf" target="_blank">⬇ Descargar PDF</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══════════════ SECCIÓN 2: REGLAMENTOS Y RGCE ══════════════ -->
+  <div id="regl" class="sec-regl" style="margin-top:40px">
+    <div class="section-title"><span class="icon">📋</span> Reglamentos y Reglas Generales de Comercio Exterior</div>
+    <table class="reg-table">
+      <thead>
+        <tr>
+          <th>Sigla</th>
+          <th>Nombre y artículos clave</th>
+          <th>Última reforma</th>
+          <th>Descargar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="sigla" style="color:var(--verde)">RLA</span></td>
+          <td>
+            <div class="reg-name">Reglamento de la Ley Aduanera</div>
+            <div class="reg-desc">Regula los procedimientos, plazos y formatos del despacho aduanero</div>
+            <div class="arts"><b>Aspectos clave:</b> Procedimiento de despacho · Reconocimiento previo · Trámites electrónicos ante VUTCE</div>
+          </td>
+          <td><span class="badge badge-dof">DOF 06-Jun-1996<br>Reformas vigentes</span></td>
+          <td class="btns">
+            <a class="btn-dl btn-dl-verde" href="https://www.diputados.gob.mx/LeyesBiblio/regla.htm" target="_blank">🔗 Ir a reglamentos</a>
+            <a class="btn-alt" href="https://dof.gob.mx/nota_detalle.php?codigo=4873616&fecha=06/06/1996" target="_blank">📄 Texto original DOF</a>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="sigla" style="color:var(--verde)">RGCE 2026</span></td>
+          <td>
+            <div class="reg-name">Reglas Generales de Comercio Exterior para 2026</div>
+            <div class="reg-desc">Principal instrumento operativo del SAT; actualiza procedimientos, padrones y formatos aduaneros</div>
+            <div class="arts"><b>Reglas clave:</b> 1.2.1 (vigencia VUTCE 1 año) · 1.3.2 (actualización Padrón de Importadores) · 1.4.1–1.4.5 (patente agente aduanal) · 4.3.1 (IMMEX y RFE) · Anexo 13 (multas actualizadas)</div>
+          </td>
+          <td><span class="badge badge-reforma">DOF 27-Dic-2025<br>Vigente 1-Ene-2026</span></td>
+          <td class="btns">
+            <a class="btn-dl btn-dl-verde" href="https://www.sat.gob.mx/minisitio/NormatividadRMFyRGCE/" target="_blank">⬇ Portal SAT RGCE</a>
+            <a class="btn-alt" href="https://www.sat.gob.mx/minisitio/NormatividadRMFyRGCE/documentos2026/rgce/anexos/Anexo13delasRGCEpara2026.pdf" target="_blank">📄 Anexo 13 (multas)</a>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="sigla" style="color:var(--verde)">IMMEX</span></td>
+          <td>
+            <div class="reg-name">Decreto para el Fomento de la Industria Manufacturera, Maquiladora y de Servicios de Exportación</div>
+            <div class="reg-desc">Regula importación temporal sin pago de IGI/IVA; 5 modalidades; pedimento clave A1</div>
+            <div class="arts"><b>Aspectos clave:</b> 5 modalidades (Industrial, Controladora, Servicios, Albergue, Terciarización) · Importación temporal sin IGI · Pedimento virtual V1 · Artículo 25 (cancelación de programas)</div>
+          </td>
+          <td><span class="badge badge-dof">DOF 1-Nov-2006<br>Última mod. 2025</span></td>
+          <td class="btns">
+            <a class="btn-dl btn-dl-verde" href="https://www.gob.mx/se/documentos/decreto-immex" target="_blank">⬇ Secretaría Economía</a>
+            <a class="btn-alt" href="https://dof.gob.mx/nota_detalle.php?codigo=5760248&fecha=28/08/2025" target="_blank">🔗 Última modificación DOF</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══════════════ SECCIÓN 3: NOMs Y FITOSANITARIOS ══════════════ -->
+  <div id="noms" class="sec-noms" style="margin-top:40px">
+    <div class="section-title"><span class="icon">🔬</span> Normas Oficiales Mexicanas y Fitosanitarias</div>
+    <table class="reg-table">
+      <thead>
+        <tr>
+          <th>Clave</th>
+          <th>Nombre y aplicación en café</th>
+          <th>Publicación DOF</th>
+          <th>Descargar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="sigla" style="color:var(--naranja)">NOM-002-FITO-2000</span></td>
+          <td>
+            <div class="reg-name">Campaña Nacional contra la Broca del Café</div>
+            <div class="reg-desc">Clasifica zonas de incidencia; regula movilización interestatal de café; base del CFMN en zonas afectadas</div>
+            <div class="arts"><b>Aplica:</b> CFMN · Verificación fitosanitaria interna · Restricciones de movilización café cerezo y pergamino</div>
+          </td>
+          <td><span class="badge badge-dof">DOF 18-Abr-2001</span></td>
+          <td class="btns">
+            <a class="btn-dl btn-dl-orange" href="https://cesavenay.org.mx/wp-content/uploads/Lineamientos 2024/MOD_NOM-002.pdf" target="_blank">⬇ Descargar PDF</a>
+            <a class="btn-alt" href="https://www.gob.mx/senasica/documentos/nom-002-fito-2000" target="_blank">🔗 SENASICA</a>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="sigla" style="color:var(--naranja)">NOM-019-FITO-1995</span></td>
+          <td>
+            <div class="reg-name">Cuarentena Exterior — Prevención de Plagas del Café</div>
+            <div class="reg-desc">Requisitos fitosanitarios para importación de café; base del CFI-I emitido por SENASICA</div>
+            <div class="arts"><b>Aplica:</b> CFI-I obligatorio para importación · Inspección fitosanitaria en punto de entrada · Revisión documental SENASICA</div>
+          </td>
+          <td><span class="badge badge-dof">DOF 10-Dic-1996</span></td>
+          <td class="btns">
+            <a class="btn-dl btn-dl-orange" href="https://platiica.economia.gob.mx/wp-content/uploads/sites/2/PDF_Normas_Publicas/019fito.pdf" target="_blank">⬇ Descargar PDF</a>
+            <a class="btn-alt" href="https://faolex.fao.org/docs/pdf/mex17815.pdf" target="_blank">🔗 FAO-Lex</a>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="sigla" style="color:var(--naranja)">NOM-051-SCFI/<br>SSA1-2010</span></td>
+          <td>
+            <div class="reg-name">Especificaciones Generales de Etiquetado — Alimentos y Bebidas Preenvasados</div>
+            <div class="reg-desc">Aplica a café soluble, tostado y molido preenvasado destinado a exportación o mercado nacional</div>
+            <div class="arts"><b>Aplica:</b> Etiquetado en español · Declaración de ingredientes · Información nutrimental · Leyendas preventivas (café con azúcar)</div>
+          </td>
+          <td><span class="badge badge-dof">DOF 05-Abr-2010</span></td>
+          <td class="btns">
+            <a class="btn-dl btn-dl-orange" href="https://www.dof.gob.mx/nota_detalle.php?codigo=5137518&fecha=05/04/2010" target="_blank">⬇ DOF (texto)</a>
+            <a class="btn-alt" href="https://www.cofepris.gob.mx/wp-content/uploads/2015/10/nom-051-scfi-ssa1-2010.pdf" target="_blank">🔗 COFEPRIS PDF</a>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="sigla" style="color:var(--naranja)">Carta Porte 3.1</span></td>
+          <td>
+            <div class="reg-name">Complemento CFDI Carta Porte — Versión 3.1</div>
+            <div class="reg-desc">Obligatorio desde 17-Jul-2024 para todo transporte terrestre de café en territorio nacional</div>
+            <div class="arts"><b>Base legal:</b> CFF Arts. 29, 29-A, 84 · <b>Productos:</b> café verde, pergamino, tostado, soluble · <b>Multa omisión:</b> $17,030–$90,790</div>
+          </td>
+          <td><span class="badge badge-reforma">Vigente 17-Jul-2024</span></td>
+          <td class="btns">
+            <a class="btn-dl btn-dl-orange" href="https://www.sat.gob.mx/minisitio/CartaPorte/" target="_blank">🔗 Portal SAT</a>
+            <a class="btn-alt" href="https://www.sat.gob.mx/cs/Satellite?blobcol=urldata&blobkey=id&blobtable=MungoBlobs&blobwhere=1461174913508&ssbinary=true" target="_blank">📄 Estándar v3.1</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══════════════ SECCIÓN 4: ACUERDOS INTERNACIONALES ══════════════ -->
+  <div id="intl" class="sec-intl" style="margin-top:40px">
+    <div class="section-title"><span class="icon">🌐</span> Acuerdos y Tratados Internacionales</div>
+    <table class="reg-table">
+      <thead>
+        <tr>
+          <th>Sigla</th>
+          <th>Nombre y aplicación en café</th>
+          <th>Publicación / Vigencia</th>
+          <th>Descargar / Consultar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="sigla" style="color:var(--amarillo)">AIC 2022</span></td>
+          <td>
+            <div class="reg-name">Acuerdo Internacional del Café 2022 — OIC Resolución 476</div>
+            <div class="reg-desc">México es OIC delegado; AMECAFÉ actúa como OIC delegado (COC-OIC). Obligatorio para toda exportación de café en grano a países miembro OIC</div>
+            <div class="arts"><b>Art. 31:</b> obligatoriedad del Certificado de Origen del Café (COC-OIC) · <b>Ratificación México:</b> DOF 4 julio 2024 · <b>AMECAFÉ:</b> organismo delegado emisor de COC</div>
+          </td>
+          <td><span class="badge badge-reforma">DOF 4-Jul-2024<br>Vigente 2024</span></td>
+          <td class="btns">
+            <a class="btn-dl btn-dl-gold" href="https://www.ico.org/es/icoagr_c.asp" target="_blank">🌐 OIC — Texto AIC</a>
+            <a class="btn-alt" href="https://amecafe.org.mx" target="_blank">🔗 AMECAFÉ COC-OIC</a>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="sigla" style="color:var(--amarillo)">T-MEC</span></td>
+          <td>
+            <div class="reg-name">Tratado entre México, Estados Unidos y Canadá (USMCA)</div>
+            <div class="reg-desc">Reglas de origen preferencial para café exportado a EUA y Canadá; arancel preferencial en Cap. 09</div>
+            <div class="arts"><b>Capítulo 5:</b> Reglas de origen · Requisitos para arancel preferencial · <b>Vigente:</b> 1 julio 2020 · <b>Fracción café:</b> libre de IGE con certificado de origen T-MEC</div>
+          </td>
+          <td><span class="badge badge-vigente">Vigente 1-Jul-2020</span></td>
+          <td class="btns">
+            <a class="btn-dl btn-dl-gold" href="https://www.gob.mx/t-mec/documentos/texto-del-t-mec" target="_blank">🌐 Texto T-MEC</a>
+            <a class="btn-alt" href="https://www.economia.gob.mx/files/marco_normativo/T-MEC_Cap_04.pdf" target="_blank">📄 Cap. 4 Reglas de Origen</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══════════════ INSTRUCCIONES ══════════════ -->
+  <div id="instrucciones" class="instrucciones" style="margin-top:40px">
+    <h3>💡 Instrucciones de descarga masiva</h3>
+    <ol>
+      <li><strong>Desde el navegador:</strong> Haz clic en <code>⬇ Descargar PDF</code> en cada fila; el archivo se abre en nueva pestaña → usa <code>Ctrl+S</code> para guardar.</li>
+      <li><strong>Para guardar toda la carpeta:</strong> Crea una carpeta <code>Reglamentos_AMECAFÉ_2026</code> en tu equipo y guarda cada PDF con su sigla como nombre (ej. <code>LA_2025.pdf</code>, <code>RGCE_2026.pdf</code>).</li>
+      <li><strong>Leyes de Diputados:</strong> Los PDFs de <code>diputados.gob.mx/LeyesBiblio/pdf/</code> son los textos vigentes más actualizados del H. Congreso de la Unión.</li>
+      <li><strong>RGCE 2026:</strong> Descárgala desde el portal SAT en <code>sat.gob.mx → Normatividad RMF y RGCE → 2026</code>. El documento principal + Anexo 13 son los más relevantes.</li>
+      <li><strong>Notas de vigencia:</strong> Las leyes con reforma DOF Nov–Dic 2025 entraron en vigor el 1 de enero de 2026. Verifica siempre en el DOF oficial si una disposición ya fue modificada.</li>
+    </ol>
+  </div>
+
+</div><!-- /container -->
+
+<footer>
+  <strong>AMECAFÉ — Asociación Mexicana de la Cadena del Café</strong><br>
+  Carpeta de Reglamentos Aplicables al Comercio Exterior · Noviembre 2026<br>
+  Fuentes: Cámara de Diputados · DOF · SAT · SENASICA · OIC · SE
+</footer>
+
+</body>
+</html>
